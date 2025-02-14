@@ -1,4 +1,9 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="REQUEST_URL" value="/bank/transactions" />
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -199,10 +204,10 @@
       </div>
       <div class="actions-container">
         <h3>Upload &amp; Filter Transactions</h3>
-        <form id="action-form">
+        <form id="action-form" action=<c:out value = "${REQUEST_URL}"/> method="post" enctype="multipart/form-data">
           <div class="full-width">
             <label for="file-upload">Choose the transaction file (CSV, JSON, XML)</label>
-            <input type="file" id="file-upload" accept=".csv, .json, .txt, .xml">
+            <input type="file" id="file-upload" name="file" accept="application/json, .csv, .xml">
           </div>
           <div hidden>
             <label for="filter-name">Name</label>
@@ -221,38 +226,30 @@
           </div>
         </form>
       </div>
-      <div class="table-container" id="table-container" hidden>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Amount</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Payment A</td>
-              <td>$100.00</td>
-              <td>2025-01-15</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Payment B</td>
-              <td>$200.00</td>
-              <td>2025-01-20</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Payment C</td>
-              <td>$150.00</td>
-              <td>2025-01-25</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <c:if test="${transactions.size() > 0}">
+          <div class="table-container" id="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Amount</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <c:forEach items="${transactions}" var="transaction">
+                    <tr>
+                        <td>${transaction.id}</td>
+                        <td style="color: ${transaction.amount < 0 ? 'red' : 'green'};"><fmt:formatNumber value="${transaction.amount}" type="currency" /></td>
+                        <td>${transaction.description}</td>
+                        <td>${transaction.createdAt}</td>
+                    </tr>
+                </c:forEach>
+              </tbody>
+            </table>
+          </div>
+      </c:if>
     </main>
   </div>
   <script>
@@ -268,10 +265,6 @@
       }
       updateFormState();
       fileInput.addEventListener('change', updateFormState);
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        document.getElementById('table-container').hidden = false;
-      });
     });
   </script>
 </body>

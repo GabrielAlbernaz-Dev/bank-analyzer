@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions>
+    <transaction>
+        <id>f47ac10b-58cc-4372-a567-0e02b2c3d479</id>
+        <amount>100.50</amount>
+        <description>Deposit</description>
+        <createdAt>2025-02-11T12:00:00</createdAt>
+    </transaction>
+    <transaction>
+        <id>e2b8b7e7-d5e9-4238-a11d-63a76c256f75</id>
+        <amount>-50.75</amount>
+        <description>Withdrawal</description>
+        <createdAt>2025-02-10T08:30:00</createdAt>
+    </transaction>
+    <transaction>
+        <id>c0f3f9ea-df8b-4b39-a75c-8a79e6e9b9aa</id>
+        <amount>2000.00</amount>
+        <description>Transfer</description>
+        <createdAt>2025-02-09T16:45:00</createdAt>
+    </transaction>
+    <transaction>
+        <id>7d9d1b4a-65c3-4f9e-8f2a-3e3f1c44a5a6</id>
+        <amount>350.00</amount>
+        <description>Deposit</description>
+        <createdAt>2025-02-08T10:15:00</createdAt>
+    </transaction>
+    <transaction>
+        <id>2a6b7f9c-8e4d-4a1f-9b3e-0e3c1a2b3c4d</id>
+        <amount>-100.00</amount>
+        <description>Withdrawal</description>
+        <createdAt>2025-02-07T14:30:00</createdAt>
+    </transaction>
+</transactions>

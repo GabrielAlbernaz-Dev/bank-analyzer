@@ -1,1 +1,10 @@
-C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\BankAnalyzerServlet.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\domain\model\BankTransaction.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\infra\parser\BankTransactionCSVParser.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\infra\parser\BankTransactionJSONParser.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\infra\extractor\FilePartExtractor.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\infra\parser\BankTransactionParser.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\infra\parser\BankTransactionXMLParser.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\infra\parser\BankTransactionParserFactory.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\application\servlet\BankTransactionAnalyzerServlet.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\application\service\BankTransactionService.java
+C:\Users\gabri\OneDrive\Desktop\bank-analyzer\src\main\java\com\github\gabrielalbernazdev\bank\application\filter\BankTransactionFilter.java
