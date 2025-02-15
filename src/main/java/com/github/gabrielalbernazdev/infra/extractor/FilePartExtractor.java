@@ -1,4 +1,4 @@
-package com.github.gabrielalbernazdev.bank.infra.extractor;
+package com.github.gabrielalbernazdev.infra.extractor;
 
 import java.io.*;
 import java.util.List;

@@ -1,9 +1,8 @@
-package com.github.gabrielalbernazdev.bank.infra.parser;
+package com.github.gabrielalbernazdev.infra.parser;
 
-import com.github.gabrielalbernazdev.bank.domain.model.BankTransaction;
+import com.github.gabrielalbernazdev.domain.model.BankTransaction;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

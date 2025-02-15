@@ -1,6 +1,6 @@
-package com.github.gabrielalbernazdev.bank.infra.parser;
+package com.github.gabrielalbernazdev.infra.parser;
 
-import com.github.gabrielalbernazdev.bank.domain.model.BankTransaction;
+import com.github.gabrielalbernazdev.domain.model.BankTransaction;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -15,10 +15,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class BankTransactionXMLParser implements BankTransactionParser {
     @Override

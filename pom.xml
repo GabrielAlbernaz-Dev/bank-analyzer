@@ -35,6 +35,7 @@
           <httpConnector>
             <port>9999</port>
           </httpConnector>
+          <scan>2</scan>
         </configuration>
       </plugin>
       <plugin>

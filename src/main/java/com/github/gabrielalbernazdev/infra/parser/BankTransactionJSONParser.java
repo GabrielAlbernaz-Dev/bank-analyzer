@@ -1,6 +1,6 @@
-package com.github.gabrielalbernazdev.bank.infra.parser;
+package com.github.gabrielalbernazdev.infra.parser;
 
-import com.github.gabrielalbernazdev.bank.domain.model.BankTransaction;
+import com.github.gabrielalbernazdev.domain.model.BankTransaction;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

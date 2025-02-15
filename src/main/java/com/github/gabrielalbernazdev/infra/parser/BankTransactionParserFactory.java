@@ -1,7 +1,7 @@
-package com.github.gabrielalbernazdev.bank.infra.parser;
+package com.github.gabrielalbernazdev.infra.parser;
 
 public class BankTransactionParserFactory {
-        public static BankTransactionParser getBankTransactionParser(String contentType) {
+    public static BankTransactionParser getBankTransactionParser(String contentType) {
         if(contentType.contains("application/json")) {
             return new BankTransactionJSONParser();
         }

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.github.gabrielalbernazdev.util.constants.PathConstants" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="REQUEST_URL" value="/bank/transactions" />
+<c:set var="REQUEST_URL" value="${PathConstants.BANK_TRANSACTION_INDEX_PATH}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -200,7 +201,7 @@
     <main class="main">
       <div class="titles">
         <h1 class="main-title">Analyze transactions</h1>
-        <h2 class="main-subtitle">The best way to analyze transactions in different formats</h2>
+        <h2 class="main-subtitle">The best way to analyze bank transactions in different formats</h2>
       </div>
       <div class="actions-container">
         <h3>Upload &amp; Filter Transactions</h3>
