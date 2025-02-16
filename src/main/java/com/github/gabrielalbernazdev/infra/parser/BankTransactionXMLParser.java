@@ -1,6 +1,8 @@
 package com.github.gabrielalbernazdev.infra.parser;
 
 import com.github.gabrielalbernazdev.domain.model.BankTransaction;
+import com.github.gabrielalbernazdev.infra.exception.BankTransactionParserException;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -54,10 +56,8 @@ public class BankTransactionXMLParser implements BankTransactionParser {
                     transactions.add(new BankTransaction(id, amount, description, createdAt));
                 }
             }
-        } catch (SAXException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (SAXException | IOException e) {
+            throw new BankTransactionParserException(e);
         }
 
         return transactions;

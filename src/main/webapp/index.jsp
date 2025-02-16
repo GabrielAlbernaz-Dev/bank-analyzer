@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.github.gabrielalbernazdev.util.constants.PathConstants" %>
+<%@ page import="com.github.gabrielalbernazdev.util.constants.ParamConstants" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="REQUEST_URL" value="${PathConstants.BANK_TRANSACTION_INDEX_PATH}" />
+<c:set var="FILE_PARAM" value="${ParamConstants.BANK_TRANSACTION_FILE_PARAM}" />
+<c:set var="NAME_PARAM" value="${ParamConstants.BANK_TRANSACTION_NAME_FILTER_PARAM}" />
+<c:set var="AMOUNT_PARAM" value="${ParamConstants.BANK_TRANSACTION_AMOUNT_FILTER_PARAM}" />
+<c:set var="DATE_PARAM" value="${ParamConstants.BANK_TRANSACTION_DATE_FILTER_PARAM}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -186,6 +191,44 @@
     #main-container .main .table-container tr:hover {
       background: #f9f9f9;
     }
+    .alert-container {
+      display:flex;
+      align-items: center;
+      justify-content:center;
+      padding 20px 0;
+    }
+    .alert-container .alert {
+      position: relative;
+      padding: 15px 20px 15px 15px;
+      border-radius: 4px;
+      margin: 10px 0;
+      font-family: Arial, sans-serif;
+      min-width: 400px;
+      max-width: 800px;
+    }
+    .alert-container .alert.alert-error {
+      border: 1px solid var(--primary);
+      background-color:rgb(255, 146, 146);
+      color: #var(--primary);
+    }
+    .alert-container .alert.alert-error .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #8a6d3b;
+    }
+    .alert-container .alert.alert-error .close-btn:hover {
+      color: #000;
+    }
+    @media screen and(max-width: 767px) {
+      #main-container .header .container {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -203,24 +246,32 @@
         <h1 class="main-title">Analyze transactions</h1>
         <h2 class="main-subtitle">The best way to analyze bank transactions in different formats</h2>
       </div>
+      <c:if test="${error != null && error.length() > 0}" >
+        <div class="alert-container container">
+          <div class="alert alert-error">
+            ${error}
+            <button class="close-btn">&times;</button>
+          </div>
+        </div>
+      </c:if>
       <div class="actions-container">
         <h3>Upload &amp; Filter Transactions</h3>
-        <form id="action-form" action=<c:out value = "${REQUEST_URL}"/> method="post" enctype="multipart/form-data">
+        <form id="action-form" action="<c:out value = "${REQUEST_URL}"/>" method="post" enctype="multipart/form-data">
           <div class="full-width">
             <label for="file-upload">Choose the transaction file (CSV, JSON, XML)</label>
-            <input type="file" id="file-upload" name="file" accept="application/json, .csv, .xml">
+            <input type="file" id="file-upload" name="${FILE_PARAM}" accept="application/json, .csv, .xml">
           </div>
           <div hidden>
             <label for="filter-name">Name</label>
-            <input type="text" id="filter-name" name="filter-name" placeholder="Transaction Name">
+            <input type="text" id="filter-name" name="${NAME_PARAM}" placeholder="Transaction Name">
           </div>
           <div hidden>
             <label for="filter-amount">Amount</label>
-            <input type="number" id="filter-amount" name="filter-amount" placeholder="Transaction Amount">
+            <input type="number" id="filter-amount" name="${AMOUNT_PARAM}" placeholder="Transaction Amount">
           </div>
           <div hidden>
             <label for="filter-date">Date</label>
-            <input type="date" id="filter-date" name="filter-date">
+            <input type="date" id="filter-date" name="${DATE_PARAM}">
           </div>
           <div class="full-width" style="text-align: right;" hidden>
             <button type="submit" disabled>Process Transactions</button>
@@ -255,6 +306,7 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      const alertCloseBtns = document.querySelectorAll('.alert-container .alert .close-btn');
       const fileInput = document.getElementById('file-upload');
       const form = document.getElementById('action-form');
       const additionalElements = Array.from(form.children).slice(1);
@@ -264,9 +316,13 @@
         additionalElements.forEach(el => { el.hidden = fileIsEmpty; });
         submitButton.disabled = fileIsEmpty;
       }
+      function closeAlert(e) {
+        e.target.closest('.alert-container')?.remove();
+      }
       updateFormState();
+      alertCloseBtns.forEach(btn => btn.addEventListener('click', closeAlert));
       fileInput.addEventListener('change', updateFormState);
-    });
+    }); 
   </script>
 </body>
 </html>
